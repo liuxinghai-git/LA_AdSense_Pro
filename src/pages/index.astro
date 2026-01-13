@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+// 获取最新的3篇文章
+const recentPosts = (await getCollection('blog')).sort(
+	(a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+).slice(0, 3);
+---
+
+<Layout title="Home - LA Travel & World Cup 2026 Guide">
+    <!-- Hero Banner -->
+    <div class="relative bg-slate-900 h-[550px] flex items-center justify-center text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=2070')] bg-cover bg-center opacity-40"></div>
+        <div class="relative z-10 max-w-4xl">
+            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-4 inline-block">Updated for 2025</span>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">Experience Los Angeles <br/> Like a Local</h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">The definitive guide to World Cup 2026, hotel deals, and hidden gems in California.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/worldcup" class="px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition">⚽ World Cup Guide</a>
+                <a href="/blog" class="px-8 py-3 bg-white hover:bg-gray-100 text-slate-900 font-bold rounded-lg transition">📖 Read the Blog</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12 text-slate-800">Latest Travel Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentPosts.map((post) => (
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <img src={post.data.image} class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 line-clamp-2"><a href={`/blog/${post.slug}`} class="hover:text-blue-600">{post.data.title}</a></h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-3">{post.data.description}</p>
+                        <a href={`/blog/${post.slug}`} class="text-blue-600 font-bold text-sm uppercase">Read Article →</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+    
+    <!-- Feature Section -->
+    <div class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Planning for World Cup 2026?</h2>
+                <p class="text-gray-600 mb-6 text-lg">Los Angeles will be a central hub. Hotels near SoFi Stadium are already seeing high demand. Don't get caught out by surge pricing.</p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">✅ <span class="ml-2">Detailed stadium transport maps</span></li>
+                    <li class="flex items-center">✅ <span class="ml-2">Safe neighborhoods to stay in</span></li>
+                    <li class="flex items-center">✅ <span class="ml-2">Ticket alert strategies</span></li>
+                </ul>
+                <a href="/worldcup" class="text-blue-600 font-bold hover:underline">Access the World Cup Hub →</a>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg">
+                <img src="https://s3-media0.fl.yelpcdn.com/bphoto/nYm_OvfyKps1JL1Mu0mLhg/o.jpg" alt="SoFi Stadium" class="w-full" />
+            </div>
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const rankedHotels = [
+    {
+        rank: 1,
+        name: "CitizenM Los Angeles Downtown",
+        tag: "Best Value",
+        score: "9.2",
+        price: "From $140",
+        desc: "Modern, smart, and affordable. Located in the heart of DTLA. Rooms are compact but high-tech. The lobby is amazing for working and socializing.",
+        pros: ["Super Clean", "Tech-enabled", "Great Bed"],
+        link: "#affiliate-citizenm",
+        image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        rank: 2,
+        name: "H Hotel Los Angeles, Curio Collection",
+        tag: "World Cup Choice",
+        score: "8.9",
+        price: "From $190",
+        desc: "Very close to LAX and SoFi Stadium. Features a rooftop deck for plane spotting. The best strategic location to avoid traffic for matches.",
+        pros: ["Airport Shuttle", "Rooftop Pool", "Soundproof"],
+        link: "#affiliate-h-hotel",
+        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        rank: 3,
+        name: "Hi View Inn & Suites",
+        tag: "Budget Gem",
+        score: "8.5",
+        price: "From $90",
+        desc: "Hard to find anything clean under $100 in LA, but this place delivers. Located near Manhattan Beach. Good for travelers with cars.",
+        pros: ["Free Parking", "Daily Cleaning", "Near Beach"],
+        link: "#affiliate-hiview",
+        image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        rank: 4,
+        name: "The Godfrey Hotel Hollywood",
+        tag: "Hollywood Style",
+        score: "8.7",
+        price: "From $170",
+        desc: "Want to stay near the Walk of Fame without the grime? Pick this. Features one of the largest rooftop pools in LA.",
+        pros: ["Great Location", "Stylish Design", "Rooftop Events"],
+        link: "#affiliate-godfrey",
+        image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80"
+    }
+];
+---
+
+<Layout title="Top 10 Best Value Hotels in LA">
+    <div class="bg-blue-600 py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">🏆 LA Hotel Rankings</h1>
+            <p class="text-blue-100 text-lg">Based on real guest reviews, price, and location convenience for 2024-2025.</p>
+        </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 py-12">
+        <div class="space-y-8">
+            {rankedHotels.map((hotel, index) => (
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 flex flex-col md:flex-row hover:shadow-2xl transition duration-300 relative">
+                    <!-- Rank Badge -->
+                    <div class={`absolute top-0 left-0 px-4 py-2 rounded-br-xl font-bold text-white z-10 ${index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-orange-600' : 'bg-blue-500'}`}>
+                        No. {hotel.rank}
+                    </div>
+
+                    <!-- Image -->
+                    <div class="md:w-1/3 h-64 md:h-auto relative">
+                        <img src={hotel.image} alt={hotel.name} class="w-full h-full object-cover" />
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <span class="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded mb-2">{hotel.tag}</span>
+                                    <h2 class="text-2xl font-bold text-gray-800">{hotel.name}</h2>
+                                </div>
+                                <div class="bg-blue-600 text-white px-3 py-1 rounded-lg text-center">
+                                    <div class="text-xl font-bold">{hotel.score}</div>
+                                    <div class="text-xs">Score</div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4">{hotel.desc}</p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                {hotel.pros.map(pro => (
+                                    <span class="flex items-center text-sm text-green-700 bg-green-50 px-2 py-1 rounded">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                        {pro}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-2">
+                            <div>
+                                <span class="text-gray-400 text-sm">Avg Price</span>
+                                <div class="text-2xl font-bold text-orange-600">{hotel.price}<span class="text-sm font-normal text-gray-500">/night</span></div>
+                            </div>
+                            <a href={hotel.link} target="_blank" class="px-6 py-3 bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold rounded-lg shadow-sm transition transform hover:-translate-y-1">
+                                Check Deal ➜
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+        
+        <!-- Ad 
+        <div class="mt-12 bg-gray-100 p-8 rounded-lg text-center text-gray-400 border border-dashed border-gray-300">
+            Google AdSense Slot
+        </div>-->
+    </div>
+</Layout>

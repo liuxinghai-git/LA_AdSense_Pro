@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const attractions = [
+    {
+        rank: 1,
+        name: "Universal Studios Hollywood",
+        type: "Theme Park",
+        time: "1 Full Day",
+        desc: "A real working movie studio and theme park. Must-dos: Mario Kart, Harry Potter, and the famous Studio Tour. Buy Express tickets to skip lines.",
+        img: "https://gips2.baidu.com/it/u=555100181,4085340763&fm=3074&app=3074&f=JPEG",
+        link: "#affiliate-universal"
+    },
+    {
+        rank: 2,
+        name: "Griffith Observatory",
+        type: "Landmark / Views",
+        time: "2-3 Hours",
+        desc: "La La Land filming location. Offers the best panoramic views of LA and the Hollywood Sign. Entry is free (Planetarium shows cost extra).",
+        img: "https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%275qC86YeM6I%2By5pav5aSp5paH5Y%2BwXzE3MzExOTAwMzIuODQ1NjY1NQ%3D%3D%27/0.png",
+        link: "#"
+    },
+    {
+        rank: 3,
+        name: "Santa Monica Pier",
+        type: "Beach",
+        time: "3-4 Hours",
+        desc: "The end of Route 66. Features the iconic Ferris wheel, street performers, and classic California beach vibes. Great for sunsets.",
+        img: "https://youimg1.c-ctrip.com/target/100g17000001343ct53AB.jpg",
+        link: "#"
+    },
+    {
+        rank: 4,
+        name: "The Getty Center",
+        type: "Museum / Art",
+        time: "Half Day",
+        desc: "A masterpiece of architecture. Houses Van Gogh's 'Irises'. Admission is free (reservation required), just pay for parking.",
+        img: "https://www.bing.com/th/id/OIP.9ZqGFY1oZ1D1nx2-BE-2ywHaE7?w=261&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+        link: "#"
+    },
+    {
+        rank: 5,
+        name: "Disneyland Park",
+        type: "Theme Park",
+        time: "1-2 Days",
+        desc: "The Happiest Place on Earth. If you are a Star Wars fan, you must visit Galaxy's Edge—it is incredibly immersive.",
+        img: "https://img0.baidu.com/it/u=1411693087,3718125352&fm=253&app=138&f=JPEG?w=800&h=1422",
+        link: "#affiliate-disney"
+    }
+];
+---
+
+<Layout title="Top 10 Attractions in Los Angeles">
+    <div class="bg-indigo-900 py-16 text-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=1500&q=80')] bg-cover opacity-20"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl font-extrabold mb-4">🎢 Top LA Attractions</h1>
+            <p class="text-xl text-indigo-200">First time in LA? You can't go wrong with this list.</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {attractions.map((item, index) => (
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <!-- Image -->
+                    <div class="relative h-56 overflow-hidden">
+                        <img src={item.img} alt={item.name} class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                        <!-- Rank Number -->
+                        <div class="absolute top-4 left-4 w-12 h-12 bg-white/90 backdrop-blur rounded-full flex items-center justify-center font-black text-2xl text-indigo-600 shadow-md">
+                            {item.rank}
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-indigo-500 bg-indigo-50 px-2 py-1 rounded uppercase">{item.type}</span>
+                            <span class="text-xs text-gray-500 flex items-center">🕒 {item.time}</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight min-h-[3.5rem]">{item.name}</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-3">{item.desc}</p>
+                        
+                        <a href={item.link} class="block w-full text-center py-3 rounded-lg font-bold transition duration-200 bg-gray-100 hover:bg-indigo-600 text-gray-700 hover:text-white group-hover:bg-indigo-600 group-hover:text-white">
+                            {item.link !== '#' ? '🎟️ Book Tickets' : 'View Details'}
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>
