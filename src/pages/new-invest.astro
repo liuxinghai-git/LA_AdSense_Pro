@@ -1,0 +1,268 @@
+---
+// ==========================================
+// ⚙️ 配置区域 (请在这里修改你的信息)
+// ==========================================
+
+// 1. 你的接收邮箱 (用户提交表单后会发邮件到这里)
+const adminEmail = "bigsea0922@gmail.com";
+
+// 2. 你的 Booking/Travelpayouts 推广长链接
+const affiliateLink = "https://expedia.com/affiliates/expedia-home.CmLzyLp"; 
+
+// 3. 网站标题
+const pageTitle = "Westlake Development Watch | Tracking Hotel 101 Los Angeles";
+
+// ==========================================
+// 页面逻辑结束
+// ==========================================
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="description" content="Independent news tracker for the Hotel 101 Los Angeles project in Westlake district. Construction updates and market analysis." />
+	</head>
+	<body>
+        <!-- 1. 顶部防混淆条幅 (UDRP 护身符) -->
+        <div class="alert-bar">
+            ⚠️ INDEPENDENT PUBLICATION: This site is a project tracker. Not affiliated with Hotel 101 Global or DoubleDragon Corp.
+        </div>
+
+        <div class="container">
+            <!-- 2. 媒体化头部 -->
+            <header class="header">
+                <h1>Westlake Development Watch</h1>
+                <div class="subtitle">Tracking the progress of Hotel 101 Los Angeles & Real Estate Trends</div>
+            </header>
+
+            <!-- 3. 内容区域 -->
+            <main>
+                <!-- 文章 1 -->
+                <article class="article">
+                    <h2>Construction Status Update: January 2026</h2>
+                    <span class="meta">News • January 26, 2026</span>
+                    <p>As Los Angeles prepares for the 2026 World Cup, all eyes are on the Westlake district. The <strong>Hotel 101 Los Angeles</strong> project at 1717 West Olympic Boulevard is currently in the development phase.</p>
+                    <p>This 378-room project is significant as it marks DoubleDragon Corporation's first major expansion into the US market. Investors and locals are watching closely to see if the timeline aligns with the influx of visitors expected in June.</p>
+                </article>
+
+                <!-- 文章 2 -->
+                <article class="article">
+                    <h2>Market Analysis: The "Condotel" Model in LA</h2>
+                    <span class="meta">Investment • January 10, 2026</span>
+                    <p>The concept of owning a hotel unit (Condo-Hotel) is gaining traction in Los Angeles. With the upcoming global events, short-term rental demand is projected to peak.</p>
+                    <p>For investors, the key appeal of the Hotel 101 model is the hands-free revenue sharing approach. However, availability of units in the resale market remains a key topic of interest.</p>
+                </article>
+
+                <!-- 4. 核心功能：收集邮箱 (无插件表单) -->
+                <div class="lead-box">
+                    <h3 class="lead-title">📩 Investor & Community Waitlist</h3>
+                    <p>Are you tracking this project for investment opportunities or resale units? Join our independent newsletter list.</p>
+                    
+                    <!-- Astro 动态绑定邮箱 -->
+                    <form action={`mailto:${adminEmail}`} method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label>Name *</label>
+                            <input type="text" name="name" class="form-input" placeholder="Your Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" class="form-input" placeholder="name@example.com" required />
+                        </div>
+                        <button type="submit" class="form-btn">Subscribe for Updates</button>
+                        <p class="form-note">By subscribing, you agree to receive project updates via email client.</p>
+                    </form>
+                </div>
+
+                <!-- 5. 隐蔽的变现 (文字链模式) -->
+                <div class="resources">
+                    <strong>📍 Visiting the Construction Site / Westlake?</strong><br/><br/>
+                    Since the project is not yet open for guests, if you are visiting Los Angeles for the World Cup or to inspect the site, you can check real-time availability for nearby accommodations:<br/><br/>
+                    
+                    <!-- Astro 动态绑定链接 -->
+                    👉 <a href={affiliateLink} target="_blank" rel="nofollow" class="aff-link">Check hotels near 1717 W Olympic Blvd (via Booking.com)</a>
+                </div>
+            </main>
+
+            <!-- 6. 法律声明 (UDRP 最终防线) -->
+            <footer class="footer">
+                <p><strong>LEGAL DISCLAIMER:</strong></p>
+                <p><strong>Westlake Development Watch</strong> (Hotel101LosAngeles.com) is an independent news and informational blog.</p>
+                <p>We are <strong>NOT</strong> affiliated, associated, authorized, endorsed by, or in any way officially connected with <strong>Hotel 101 Global Pte. Ltd.</strong>, <strong>DoubleDragon Corporation</strong>, or any of their subsidiaries. The official Hotel 101 website can be found at <a href="https://www.hotel101.com" target="_blank" rel="nofollow">www.hotel101.com</a>.</p>
+                <p>All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.</p>
+                <p><em>Disclosure: This site may contain affiliate links. We may earn a commission if you make a purchase through these links, at no extra cost to you.</em></p>
+                <br/>
+                <p>Contact / Media / Asset Acquisition Inquiries: contact@hotel101losangeles.com</p>
+            </footer>
+        </div>
+	</body>
+</html>
+
+<style>
+    /* 全局样式 - 模仿专业新闻站 */
+    :global(body) {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        color: #333;
+        line-height: 1.6;
+        padding: 0 20px;
+    }
+
+    /* 顶部红色条幅 */
+    .alert-bar {
+        background-color: #991b1b;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    /* 头部 */
+    .header {
+        border-bottom: 4px solid #1e293b;
+        padding: 40px 0 20px;
+        margin-bottom: 40px;
+    }
+    .header h1 {
+        font-family: Arial, sans-serif;
+        font-size: 2.8rem;
+        margin: 0;
+        letter-spacing: -1px;
+        color: #0f172a;
+    }
+    .header .subtitle {
+        color: #64748b;
+        font-size: 1.2rem;
+        margin-top: 5px;
+        font-style: italic;
+    }
+
+    /* 文章 */
+    .article {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .article h2 {
+        font-family: Arial, sans-serif;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #1e40af;
+    }
+    .meta {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 15px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* 表单区域 */
+    .lead-box {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 35px;
+        border-radius: 8px;
+        margin: 40px 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .lead-title {
+        font-family: Arial, sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0f172a;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+    .form-btn {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .form-btn:hover {
+        background-color: #1d4ed8;
+    }
+    .form-note {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 10px;
+    }
+
+    /* 变现区 */
+    .resources {
+        background: #fffbeb;
+        padding: 25px;
+        border: 1px solid #fcd34d;
+        border-radius: 6px;
+        font-family: Arial, sans-serif;
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+    .aff-link {
+        font-weight: bold;
+        color: #d97706;
+        font-size: 1.1rem;
+        text-decoration: underline;
+    }
+
+    /* 页脚 */
+    .footer {
+        font-family: Arial, sans-serif;
+        font-size: 0.8rem;
+        color: #666;
+        padding-top: 30px;
+        border-top: 2px solid #333;
+        margin-top: 60px;
+        padding-bottom: 40px;
+    }
+    .footer a {
+        color: #475569;
+        text-decoration: underline;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 600px) {
+        .header h1 { font-size: 2rem; }
+        .w-container { padding: 0 15px; }
+    }
+</style>
